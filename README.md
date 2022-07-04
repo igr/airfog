@@ -15,8 +15,7 @@ Create `airfog.json`:
 }
 ```
 
-## Run
-
+## Usage
 
 + Clear Task instances
 ```bash

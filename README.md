@@ -19,6 +19,6 @@ Create `airfog.json`:
 
 
 + Clear Task instances
-```json
+```bash
 airfog clear-ti --dag=shapes_biweekly_geocode_build
 ```

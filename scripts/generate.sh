@@ -1,0 +1,1 @@
+./go.sh ../api/openapi.json ../internal/airflow

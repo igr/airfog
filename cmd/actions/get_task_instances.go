@@ -1,6 +1,9 @@
 package actions
 
-import "foursquare.com/airfog/cmd/util"
+import (
+	"foursquare.com/airfog/cmd/util"
+	"foursquare.com/airfog/internal/airflow"
+)
 
 func GetTaskInstances(ctx ApiCtx, dagId string, dagRunId string) []string {
 	var failedTaskIds []string
@@ -21,7 +24,7 @@ func GetTaskInstances(ctx ApiCtx, dagId string, dagRunId string) []string {
 		taskInstances := *tasks.TaskInstances
 		totalInstances := *tasks.TotalEntries
 		for _, task := range taskInstances {
-			if task.State != nil && *task.State != "success" {
+			if task.State != nil && *task.State != airflow.TASKSTATE_SUCCESS {
 				failedTaskIds = append(failedTaskIds, *task.TaskId)
 			}
 		}

@@ -24,6 +24,12 @@ func (cmd *CleartiCmd) Run(apiCtx actions.ApiCtx, globals *Globals) error {
 
 	failedTaskIds := actions.GetTaskInstances(apiCtx, cmd.Dag, cmd.DagRunId)
 
+	if len(failedTaskIds) == 0 {
+		util.Print("Nothing to clear.")
+
+		return nil
+	}
+
 	util.Print("Clearing " + strconv.Itoa(len(failedTaskIds)) + " task instances.")
 
 	actions.PostClearTaskInstances(apiCtx, cmd.Dag, failedTaskIds)

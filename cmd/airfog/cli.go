@@ -24,13 +24,15 @@ type Globals struct {
 
 type CLI struct {
 	Globals
-	ClearTi CleartiCmd `cmd:"" help:"Clear non-successful Task Instances"`
+	ClearTi   CleartiCmd   `cmd:"" help:"Clear non-successful Task Instances"`
+	RunAllTag RunAllTagCmd `cmd:"" help:"Run all DAGs with given tag"`
 }
 
 func runCli(apiCtx actions.ApiCtx) {
+	version := "0.0.3"
 	cli := CLI{
 		Globals: Globals{
-			Version: VersionFlag("0.1.1"),
+			Version: VersionFlag(version),
 		},
 	}
 
@@ -44,7 +46,7 @@ func runCli(apiCtx actions.ApiCtx) {
 			Compact: true,
 		}),
 		kong.Vars{
-			"version": "0.0.1",
+			"version": version,
 		})
 	err := kongCtx.Run(apiCtx, &cli.Globals)
 	kongCtx.FatalIfErrorf(err)

@@ -26,7 +26,6 @@ func (cmd *CleartiCmd) Run(apiCtx actions.ApiCtx, globals *Globals) error {
 
 	if len(failedTaskIds) == 0 {
 		util.Print("Nothing to clear.")
-
 		return nil
 	}
 

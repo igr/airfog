@@ -26,6 +26,14 @@ Create `airfog.json`:
 
 [Airflow API](https://airflow.apache.org/docs/apache-airflow/stable/stable-rest-api-ref.html#operation/post_clear_task_instances)
 
-```bash
+```shell
 airfog clear-ti --dag=shapes_biweekly_geocode_build
+```
+
+### `run-all-tag` Run all DAGs with given tag
+
++ Run all DAGs with given tag name.
+
+```shell
+airfog run-all-tag --tag ELMER
 ```
